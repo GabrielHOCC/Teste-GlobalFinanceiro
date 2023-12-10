@@ -1,0 +1,31 @@
+<div class="welcome-container">
+  <p class="welcome-text">
+    Bem-vindo ao mundo mágico de <span class="harry-potter-text">Harry Potter</span>! Explore informações fascinantes sobre personagens, casas e idades no universo mágico.
+  </p>
+</div>
+
+<!-- CRIA UM TEXTO COM EVENTO DE CLIQUE -->
+<p (click)="souUmaFuncaDeClique()" class="clickable-text">Click e Descubra o Universo de  HP</p>
+<div class="filtros">
+  <button class="nascimento" (click)="filtrarPorAnoNascimento()">
+    Filtrar por ano nascimento
+  </button>
+  <button class="nome" (click)="filtrarPorNome()">Filtrar por nome</button>
+</div>
+
+<!-- VERIFICA SE MINHA LISTA ESTA VAZIA -->
+<div *ngIf="listaDeDados.length !== 0" class="area-cards">
+  <!-- SE NAO ESTIVER VAZIA, PERCORRE ELA E MOSTRA AS INFOS NA TELA -->
+  <!-- CRIA UM CONTAINER PARA FAZER O FOR, AI NAO PRECISO DE UMA <div> POR EXEMPLO -->
+  <ng-container *ngFor="let lista of listaDeDados">
+    <!-- ENVIA DADOS PARA O MEU COMPONENTE -->
+
+    <app-potter-card
+      :nome="{{ lista.nome }}"
+      :idade="{{ lista.idade }}"
+      :foto="{{ lista.foto }}"
+      :casa="{{lista.casa}}"
+      class="card-potter"
+    ></app-potter-card>
+  </ng-container>
+</div>
